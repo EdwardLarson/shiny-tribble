@@ -15,6 +15,7 @@ LAST UPDATED: 5/1/2016
 #include <SDL_image.h>
 
 #include "utility\Timer.h"
+#include "game\GameState.h"
 
 bool init();
 void close();
@@ -41,7 +42,7 @@ int main(int argc, char* argv[]) {
 	const double S_PER_TICK = 0.015; //gives about 60 ticks per second
 
 	// ---GAME---
-	//GameState* currentGameState = new GameState_MainMenu;
+	game::GameState* currentGameState = new game::GameState(mainRenderer); //GameState_MainMenu;
 
 	int ticks = 0;
 	int loops = 0;
@@ -51,25 +52,30 @@ int main(int argc, char* argv[]) {
 	//Start the main loop
 	bool quit = false;
 	while (!quit) {
+
+		while (SDL_PollEvent(&e) != 0) {
+			if (e.type == SDL_QUIT) quit = true;
+			else currentGameState->processEvent(&e);
+		}
+
 		if (dt.elapsed() >= S_PER_TICK) {
-			//currentGameState->update();
+			currentGameState->update();
 			dt.reset();
 			ticks++;
 
 			std::cout << "Tick number " << ticks << " over " << (runningTime.elapsed()) << " seconds" << std::endl;
 		}
-		//currentGameState->render();
+		currentGameState->render();
 		SDL_RenderClear(mainRenderer);
 		SDL_RenderPresent(mainRenderer);
-
-		while (SDL_PollEvent(&e) != 0) {
-			if (e.type == SDL_QUIT) quit = true;
-		}
 
 		loops++;
 	}
 
 	//Deallocate all variables
+
+	delete currentGameState;
+
 	SDL_DestroyRenderer(mainRenderer);
 	SDL_DestroyWindow(mainWindow);
 

@@ -19,10 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\GameEnvironment.cpp" />
+    <ClCompile Include="src\game\GameWorld.cpp" />
+    <ClCompile Include="src\game\entity\Entity.cpp" />
+    <ClCompile Include="src\game\GameState.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\utility\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\GameEnvironment.h" />
+    <ClInclude Include="src\game\GameWorld.h" />
+    <ClInclude Include="src\game\entity\Entity.h" />
+    <ClInclude Include="src\game\GameState.h" />
     <ClInclude Include="src\utility\Timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

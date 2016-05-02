@@ -4,6 +4,7 @@
 namespace utility {
 namespace time {
 
+//Class to keep track of time elapsed
 class Timer{
 public:
 	Timer();
