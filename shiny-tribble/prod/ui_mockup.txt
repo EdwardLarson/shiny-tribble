@@ -1,0 +1,15 @@
+_obj_ BUTTON{
+x = 0.5;
+}
+
+_obj_ TEXTBOX{
+
+}
+
+_obj_ PICTURE{
+
+}
+
+_obj_ TEXTFIELD{
+
+}

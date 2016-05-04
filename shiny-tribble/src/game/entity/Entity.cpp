@@ -3,8 +3,8 @@
 using namespace game;
 using namespace entity;
 
-Entity::Entity(){
-
+Entity::Entity(): mTexture(NULL), x(0), y(0){
+	
 }
 
 
@@ -14,4 +14,8 @@ Entity::~Entity(){
 
 void Entity::update(){
 
+}
+
+void Entity::render(SDL_Renderer* renderer) {
+	if (mTexture != NULL) mTexture->render(renderer, x, y);
 }

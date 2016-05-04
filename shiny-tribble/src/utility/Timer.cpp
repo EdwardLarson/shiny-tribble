@@ -15,7 +15,7 @@ void Timer::reset() {
 	begin_ = clock_::now();
 }
 
-//Get time elapsed in seconds
+//Get time elapsed in milliseconds
 double Timer::elapsed() {
-	return std::chrono::duration_cast<second_> (clock_::now() - begin_).count();
+	return std::chrono::duration_cast<millisecond_> (clock_::now() - begin_).count();
 }

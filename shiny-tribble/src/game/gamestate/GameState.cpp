@@ -1,9 +1,10 @@
 #include "GameState.h"
 
 using namespace game;
+using namespace gamestate;
 
-GameState::GameState(SDL_Renderer* renderer): currentEnvironment(NULL), world(NULL), mRenderer(renderer){
-
+GameState::GameState(SDL_Renderer* renderer): mRenderer(renderer){
+	//also need to load all of the textures for this gamestate
 }
 
 
@@ -11,18 +12,18 @@ GameState::~GameState(){
 
 }
 
+/*
 //Perform any actions that should be performed at every tick
 void GameState::update() {
-	currentEnvironment->update();
+	
 }
 
-//Render 
+//Render to screen whatever this GameState requires
 void GameState::render() {
-	currentEnvironment->render(mRenderer);
 
-	//render ui
 }
 
 void GameState::processEvent(SDL_Event* event) {
 
 }
+*/

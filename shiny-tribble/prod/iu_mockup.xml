@@ -1,0 +1,10 @@
+<Button>
+	<width>20</width>
+	<height>20</height>
+	<label>First Button</label>
+	
+	<onClick>firstbutton_onClick</onClick>
+	
+	<x>0.5</x>
+	<y>0.5</y>
+</Button>

@@ -19,19 +19,60 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\ui\Button.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\game\GameEnvironment.cpp" />
+    <ClCompile Include="src\game\gamestate\MainMenuState.cpp" />
     <ClCompile Include="src\game\GameWorld.cpp" />
-    <ClCompile Include="src\game\entity\Entity.cpp" />
-    <ClCompile Include="src\game\GameState.cpp" />
+    <ClCompile Include="src\game\entity\Entity.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\game\gamestate\GameState.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\graphics\graphics.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\utility\Timer.cpp" />
+    <ClCompile Include="src\graphics\Texture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\utility\UIParsing.cpp" />
+    <ClCompile Include="src\game\ui\UI.cpp" />
+    <ClCompile Include="src\game\ui\UIElement.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\ui\Button.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\game\gamestate\MainMenuState.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="src\game\GameEnvironment.h" />
     <ClInclude Include="src\game\GameWorld.h" />
     <ClInclude Include="src\game\entity\Entity.h" />
-    <ClInclude Include="src\game\GameState.h" />
+    <ClInclude Include="src\game\gamestate\GameState.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\graphics\graphics.h" />
     <ClInclude Include="src\utility\Timer.h" />
+    <ClInclude Include="src\graphics\Texture.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\utility\UIParsing.h" />
+    <ClInclude Include="src\game\ui\UI.h" />
+    <ClInclude Include="src\game\ui\UIElement.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{54D93EE0-6152-4F43-80D5-DC803038665C}</ProjectGuid>

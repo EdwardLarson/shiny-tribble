@@ -1,0 +1,31 @@
+IMAGE {
+	id = image_background;
+	priority = 0;
+	x = 0;
+	y = 0;
+	width = AUTO;
+	height = AUTO;
+	img = res/graphics/main_menu.png;
+}
+
+TEXTBOX {
+	id = textbox_welcome;
+	priority = 1;
+	x = 0.1;
+	y = 0.1;
+	width = AUTO;
+	height = AUTO;
+	
+	text = "Welcome to the game!"
+}
+
+BUTTON {
+	id = button_play;
+	priority = 2;
+	x = 0.1;
+	y = 0.5;
+	width = AUTO;
+	height = AUTO;
+	
+	text = "Play";
+}

@@ -1,7 +1,7 @@
 /*
 Created by Ed Larson 5/1/2016
 
-LAST UPDATED: 5/1/2016
+LAST UPDATED: 5/3/2016
 */
 
 #define WINDOW_WIDTH 1024
@@ -15,7 +15,8 @@ LAST UPDATED: 5/1/2016
 #include <SDL_image.h>
 
 #include "utility\Timer.h"
-#include "game\GameState.h"
+#include "game\gamestate\GameState.h"
+#include "game\gamestate\MainMenuState.h"
 
 bool init();
 void close();
@@ -32,20 +33,32 @@ int main(int argc, char* argv[]) {
 	// ---SDL---
 	init();
 
-	SDL_Window* mainWindow = buildWindow("Platformer Game", WINDOW_WIDTH, WINDOW_HEIGHT);
+	SDL_DisplayMode displayMode;
+	int windowW, windowH;
+
+	if (SDL_GetCurrentDisplayMode(0, &displayMode) != 0) {
+		printf("Unable to get display mode for display %s! SDL Error: %s\n", 0, SDL_GetError());
+		windowW = WINDOW_WIDTH;
+		windowH = WINDOW_HEIGHT;
+	}else {
+		printf("Got the current display mode: %i x %i\n", displayMode.w, displayMode.h);
+		windowW = displayMode.w;
+		windowH = displayMode.h;
+	}
+
+	SDL_Window* mainWindow = buildWindow("Platformer Game", windowW, windowH);
 	SDL_Renderer* mainRenderer = buildRenderer(mainWindow);
 
 	// ---TIME---
 	utility::time::Timer runningTime;
-	utility::time::Timer dt;
+	utility::time::Timer timeSinceLastUpdate;
 	
 	const double S_PER_TICK = 0.015; //gives about 60 ticks per second
 
 	// ---GAME---
-	game::GameState* currentGameState = new game::GameState(mainRenderer); //GameState_MainMenu;
+	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState(mainRenderer); //GameState_MainMenu;
 
-	int ticks = 0;
-	int loops = 0;
+	double dt;
 
 	SDL_Event e;
 
@@ -58,18 +71,15 @@ int main(int argc, char* argv[]) {
 			else currentGameState->processEvent(&e);
 		}
 
-		if (dt.elapsed() >= S_PER_TICK) {
-			currentGameState->update();
-			dt.reset();
-			ticks++;
+		dt = timeSinceLastUpdate.elapsed();
+		timeSinceLastUpdate.reset();
+		
+		currentGameState->update(dt);
+		//std::cout << "Updated with a dt of " << dt << std::endl;
 
-			std::cout << "Tick number " << ticks << " over " << (runningTime.elapsed()) << " seconds" << std::endl;
-		}
 		currentGameState->render();
 		SDL_RenderClear(mainRenderer);
 		SDL_RenderPresent(mainRenderer);
-
-		loops++;
 	}
 
 	//Deallocate all variables
