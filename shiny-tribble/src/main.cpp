@@ -14,6 +14,7 @@ LAST UPDATED: 5/3/2016
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include "ServiceProvider.h"
 #include "utility\Timer.h"
 #include "game\gamestate\GameState.h"
 #include "game\gamestate\MainMenuState.h"
@@ -37,7 +38,7 @@ int main(int argc, char* argv[]) {
 	int windowW, windowH;
 
 	if (SDL_GetCurrentDisplayMode(0, &displayMode) != 0) {
-		printf("Unable to get display mode for display %s! SDL Error: %s\n", 0, SDL_GetError());
+		printf("Unable to get display mode for display %i! SDL Error: %s\n", 0, SDL_GetError());
 		windowW = WINDOW_WIDTH;
 		windowH = WINDOW_HEIGHT;
 	}else {
@@ -56,7 +57,12 @@ int main(int argc, char* argv[]) {
 	const double S_PER_TICK = 0.015; //gives about 60 ticks per second
 
 	// ---GAME---
-	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState(mainRenderer); //GameState_MainMenu;
+	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState(); //GameState_MainMenu;
+
+	//initialize service
+	ServiceProvider::provideAudio(new audio::NullAudioService());
+	ServiceProvider::provideVideo(new graphics::NullVideoService());
+	ServiceProvider::provideLogging(new utility::DefaultLoggingService("prod/log.txt"));
 
 	double dt;
 
@@ -75,7 +81,7 @@ int main(int argc, char* argv[]) {
 		timeSinceLastUpdate.reset();
 		
 		currentGameState->update(dt);
-		//std::cout << "Updated with a dt of " << dt << std::endl;
+		std::cout << "Updated with a dt of " << dt << std::endl;
 
 		currentGameState->render();
 		SDL_RenderClear(mainRenderer);

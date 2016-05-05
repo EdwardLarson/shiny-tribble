@@ -3,13 +3,14 @@
 #include <iostream>
 #include <SDL.h>
 #include "GameState.h"
+#include "../../ServiceProvider.h"
 
 namespace game{
 namespace gamestate{
 
 class MainMenuState: public GameState{
 public:
-	MainMenuState(SDL_Renderer* renderer);
+	MainMenuState();
 	virtual ~MainMenuState();
 
 	virtual void loadGraphics();

@@ -1,15 +1,13 @@
 #pragma once
+#include "C:\Users\larsoe4\Documents\shiny-tribble\shiny-tribble\src\game\ui\UIElement.h"
 
-#include "UIElement.h"
+namespace game{
+namespace ui{
 
-namespace game {
-namespace ui {
-
-class Button: public UIElement
-{
+class Textbox: public UIElement{
 public:
-	Button();
-	virtual ~Button();
+	Textbox();
+	virtual ~Textbox();
 
 	virtual void render(SDL_Renderer* renderer) override;
 

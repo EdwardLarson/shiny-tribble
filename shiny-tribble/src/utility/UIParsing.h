@@ -30,7 +30,7 @@ std::vector<DynamicObject*> parse(char* filename);
 
 std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
 std::vector<std::string> split(const std::string &s, char delim);
-std::string fullStrip(const std::string& str);
+std::string removeWhitespace(const std::string& str);
 
 std::vector<DynamicObject*> getObjects(const std::string& fileText);
 DynamicObject* createObject(const std::string& rawObject);

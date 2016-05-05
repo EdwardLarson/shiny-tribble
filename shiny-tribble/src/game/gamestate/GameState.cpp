@@ -3,7 +3,7 @@
 using namespace game;
 using namespace gamestate;
 
-GameState::GameState(SDL_Renderer* renderer): mRenderer(renderer){
+GameState::GameState(){
 	//also need to load all of the textures for this gamestate
 }
 

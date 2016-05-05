@@ -2,6 +2,7 @@
 
 #include <istream>
 #include <sstream>
+#include <SDL.h>
 #include "../../utility/UIParsing.h"
 
 namespace game {
@@ -13,7 +14,7 @@ public:
 	//UIElement();
 	//~UIElement();
 
-	virtual void render() = 0;
+	virtual void render(SDL_Renderer* renderer) = 0;
 
 	virtual void loadFromDynamicObject(utility::parsing::DynamicObject* obj) = 0;
 
@@ -21,6 +22,7 @@ public:
 
 protected:
 	std::string id;
+	float x, y;
 	int priority;
 };
 

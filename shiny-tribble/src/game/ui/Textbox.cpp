@@ -1,24 +1,24 @@
-#include "Button.h"
+#include "Textbox.h"
 
 using namespace game;
 using namespace ui;
 
-Button::Button(){
+Textbox::Textbox(){
 
 }
 
 
-Button::~Button(){
+Textbox::~Textbox(){
 
 }
 
-void Button::render(SDL_Renderer* renderer) {
+void Textbox::render(SDL_Renderer* renderer) {
 
 }
 
 //Load the variables stored in a DynamicObject into this Button
 //If the DynamicObject doesn't have a certain variable, the default value is simply kept
-void Button::loadFromDynamicObject(utility::parsing::DynamicObject* obj) {
+void Textbox::loadFromDynamicObject(utility::parsing::DynamicObject* obj) {
 	if (obj == NULL) return;
 
 	std::string current = "";

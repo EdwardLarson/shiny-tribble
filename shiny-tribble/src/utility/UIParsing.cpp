@@ -42,7 +42,7 @@ std::vector<DynamicObject*> utility::parsing::parse(char* filename) {
 
 		std::string wholeFile((std::istreambuf_iterator<char>(in_str)), std::istreambuf_iterator<char>());
 
-		std::vector<DynamicObject*> objects = getObjects(fullStrip(wholeFile));
+		std::vector<DynamicObject*> objects = getObjects(removeWhitespace(wholeFile));
 
 		for (unsigned int i = 0; i < objects.size(); i++) {
 			if (objects[i] != NULL) output.push_back(objects[i]);
@@ -129,7 +129,7 @@ std::vector<std::string> utility::parsing::split(const std::string &s, char deli
 //Strip a string of all whitespace
 //Ignores whitespace within single or double quotes
 //Single or double quotes can be escaped with '\'
-std::string utility::parsing::fullStrip(const std::string& str) {
+std::string utility::parsing::removeWhitespace(const std::string& str) {
 	std::string result;
 	bool ignoringWhitespace = false;
 	bool escaped = false;

@@ -29,7 +29,7 @@ void UI::buildFromFile(char* filename) {
 	}
 }
 
-void UI::render(SDL_Renderer* renderer) {
+void UI::render() {
 	//render each element in order of priority
 	for (std::list<game::ui::UIElement*>::const_iterator iter = elements.begin();
 		iter != elements.end();

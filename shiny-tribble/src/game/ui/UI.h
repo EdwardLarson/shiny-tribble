@@ -15,7 +15,7 @@ public:
 	UI();
 	virtual ~UI();
 
-	virtual void render(SDL_Renderer* renderer);
+	virtual void render();
 
 	virtual void buildFromFile(char* filename);
 
