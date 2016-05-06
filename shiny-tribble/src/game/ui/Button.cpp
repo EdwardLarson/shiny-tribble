@@ -12,8 +12,8 @@ Button::~Button(){
 
 }
 
-void Button::render(SDL_Renderer* renderer) {
-
+void Button::render() {
+	ServiceProvider::getVideo()->render(mTexture, x, y);
 }
 
 //Load the variables stored in a DynamicObject into this Button
@@ -33,4 +33,9 @@ void Button::loadFromDynamicObject(utility::parsing::DynamicObject* obj) {
 	if (current != "") easyCast(current, y);
 	current = obj->getValue("text");
 	if (current != "") easyCast(current, text);
+	current = obj->getValue("img");
+	if (current != "") {
+		easyCast(current, mTexture);
+		ServiceProvider::getVideo()->loadTexture(mTexture);
+	}
 }

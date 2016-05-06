@@ -9,7 +9,7 @@ public:
 	Textbox();
 	virtual ~Textbox();
 
-	virtual void render(SDL_Renderer* renderer) override;
+	virtual void render() override;
 
 	virtual void loadFromDynamicObject(utility::parsing::DynamicObject * obj) override;
 

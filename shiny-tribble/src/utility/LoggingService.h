@@ -34,7 +34,7 @@ public:
 	virtual void log(const std::string& text);
 
 protected:
-	std::string outBuffer;
+	std::ofstream outputStream;
 };
 
 }

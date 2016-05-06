@@ -56,12 +56,13 @@ int main(int argc, char* argv[]) {
 	utility::time::Timer timeSinceLastUpdate;
 
 	// ---GAME---
-	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState(); //GameState_MainMenu;
-
 	//initialize service
 	ServiceProvider::provideAudio(new audio::NullAudioService());
-	ServiceProvider::provideVideo(new graphics::NullVideoService());
+	ServiceProvider::provideVideo(new graphics::DefaultVideoService(mainRenderer));
 	ServiceProvider::provideLogging(new utility::DefaultLoggingService("prod/log.txt"));
+
+	//initialize gamestate
+	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState();
 
 	double dt;
 	double lag = 0;
@@ -84,12 +85,10 @@ int main(int argc, char* argv[]) {
 		while (lag >= MS_PER_TICK) {
 			currentGameState->update();
 			lag -= MS_PER_TICK;
-			std::cout << "Tick" << std::endl;
 		}
 
-		currentGameState->render();
-		std::cout << "Frame" << std::endl;
 		SDL_RenderClear(mainRenderer);
+		currentGameState->render();
 		SDL_RenderPresent(mainRenderer);
 	}
 
@@ -107,9 +106,6 @@ int main(int argc, char* argv[]) {
 
 	//Close SDL and various libraries
 	close();
-
-	std::string	DELETE_ME;
-	std::cin >> DELETE_ME;
 
 	return 0;
 }

@@ -20,6 +20,9 @@ public:
 	virtual void render() override;
 
 	virtual void processEvent(SDL_Event* event) override;
+
+private:
+	
 };
 
 }

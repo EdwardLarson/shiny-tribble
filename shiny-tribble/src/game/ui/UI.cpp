@@ -36,6 +36,7 @@ void UI::render() {
 		++iter) {
 
 		//render element
+		(*iter)->render();
 	}
 }
 

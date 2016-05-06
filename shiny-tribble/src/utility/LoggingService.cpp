@@ -24,25 +24,26 @@ void NullLoggingService::log(const std::string& text) {
 //DefaultLoggingService
 //========================================
 
-DefaultLoggingService::DefaultLoggingService(const std::string& filename){
-	outputFile = filename;
+DefaultLoggingService::DefaultLoggingService(const std::string& filename)
+	: outputStream(filename.c_str()){
+	if (outputStream.good()) {
+		outputStream << "=== BEGIN LOG === " << std::endl;
+	}else {
+		std::cerr << "ERROR: Attempt open " << filename << " for logging was unsuccessful" << std::endl;
+	}
 }
 
 DefaultLoggingService::~DefaultLoggingService() {
 	//when this object is destroyed, dump the output buffer into a text file
-	std::ofstream out_str( outputFile.c_str());
-	if (out_str.good()) {
-		out_str << "=== BEGIN LOG ===\n";
-		out_str << outBuffer;
-		out_str.close();
-	}else {
-		std::cerr << "ERROR: Unable to open file " << outputFile << std::endl;
+	if (outputStream.good()) {
+		outputStream << "=== END LOG ===";
+		outputStream.close();
 	}
 }
 
 void DefaultLoggingService::log(const std::string& text) {
 	//log this text to the output buffer
-	std::cout << "LOGGED" << std::endl;
-	outBuffer += text;
-	outBuffer += '\n';
+	if (outputStream.good()) {
+		outputStream << text << std::endl;
+	}
 }

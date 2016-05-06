@@ -12,7 +12,7 @@ Textbox::~Textbox(){
 
 }
 
-void Textbox::render(SDL_Renderer* renderer) {
+void Textbox::render() {
 
 }
 

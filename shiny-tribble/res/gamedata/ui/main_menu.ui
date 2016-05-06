@@ -5,7 +5,7 @@ IMAGE {
 	y = 0;
 	width = AUTO;
 	height = AUTO;
-	img = res/graphics/main_menu.png;
+	img = "res/graphics/main_menu.png";
 }
 
 TEXTBOX {
@@ -22,10 +22,11 @@ TEXTBOX {
 BUTTON {
 	id = button_play;
 	priority = 2;
-	x = 0.1;
+	x = 0.7;
 	y = 0.5;
 	width = AUTO;
 	height = AUTO;
 	
 	text = "Play";
+	img = "res/graphics/button.png";
 }

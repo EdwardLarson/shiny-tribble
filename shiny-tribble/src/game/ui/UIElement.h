@@ -14,7 +14,7 @@ public:
 	//UIElement();
 	//~UIElement();
 
-	virtual void render(SDL_Renderer* renderer) = 0;
+	virtual void render() = 0;
 
 	virtual void loadFromDynamicObject(utility::parsing::DynamicObject* obj) = 0;
 

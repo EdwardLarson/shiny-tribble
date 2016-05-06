@@ -1,6 +1,8 @@
 #pragma once
 
 #include "UIElement.h"
+#include "../../graphics/Texture.h"
+#include "../../ServiceProvider.h"
 
 namespace game {
 namespace ui {
@@ -11,12 +13,13 @@ public:
 	Button();
 	virtual ~Button();
 
-	virtual void render(SDL_Renderer* renderer) override;
+	virtual void render() override;
 
 	virtual void loadFromDynamicObject(utility::parsing::DynamicObject * obj) override;
 
 private:
 	std::string text;
+	std::string mTexture;
 };
 
 }
