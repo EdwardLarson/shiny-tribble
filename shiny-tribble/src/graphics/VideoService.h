@@ -16,7 +16,7 @@ public:
 	virtual void loadTexture(const std::string& filename) = 0;
 
 private:
-	std::unordered_map<const std::string, Texture*, std::hash<std::string> > textures; //need to define a hash function for a fucking string? really?
+	std::unordered_map<const std::string, Texture*, std::hash<std::string> > textures;
 };
 
 class NullVideoService: public VideoService {

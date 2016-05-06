@@ -15,7 +15,7 @@ public:
 
 	virtual void loadGraphics();
 
-	virtual void update(double dt) override;
+	virtual void update() override;
 
 	virtual void render() override;
 

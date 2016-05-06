@@ -18,7 +18,7 @@ void MainMenuState::loadGraphics(){
 }
 
 //Perform any per-tick update to the main menu
-void MainMenuState::update(double dt) {
+void MainMenuState::update() {
 	ServiceProvider::getLogging()->log("Updated the MainMenuState");
 }
 

@@ -32,6 +32,7 @@ DefaultLoggingService::~DefaultLoggingService() {
 	//when this object is destroyed, dump the output buffer into a text file
 	std::ofstream out_str( outputFile.c_str());
 	if (out_str.good()) {
+		out_str << "=== BEGIN LOG ===\n";
 		out_str << outBuffer;
 		out_str.close();
 	}else {
@@ -42,5 +43,6 @@ DefaultLoggingService::~DefaultLoggingService() {
 void DefaultLoggingService::log(const std::string& text) {
 	//log this text to the output buffer
 	std::cout << "LOGGED" << std::endl;
-	(outBuffer += text) += '\n';
+	outBuffer += text;
+	outBuffer += '\n';
 }

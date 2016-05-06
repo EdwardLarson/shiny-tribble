@@ -6,6 +6,7 @@ LAST UPDATED: 5/3/2016
 
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 512
+#define MS_PER_TICK 10
 
 #include <iostream>
 #include <chrono>
@@ -53,8 +54,6 @@ int main(int argc, char* argv[]) {
 	// ---TIME---
 	utility::time::Timer runningTime;
 	utility::time::Timer timeSinceLastUpdate;
-	
-	const double S_PER_TICK = 0.015; //gives about 60 ticks per second
 
 	// ---GAME---
 	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState(); //GameState_MainMenu;
@@ -65,6 +64,7 @@ int main(int argc, char* argv[]) {
 	ServiceProvider::provideLogging(new utility::DefaultLoggingService("prod/log.txt"));
 
 	double dt;
+	double lag = 0;
 
 	SDL_Event e;
 
@@ -78,12 +78,17 @@ int main(int argc, char* argv[]) {
 		}
 
 		dt = timeSinceLastUpdate.elapsed();
+		lag += dt;
 		timeSinceLastUpdate.reset();
 		
-		currentGameState->update(dt);
-		std::cout << "Updated with a dt of " << dt << std::endl;
+		while (lag >= MS_PER_TICK) {
+			currentGameState->update();
+			lag -= MS_PER_TICK;
+			std::cout << "Tick" << std::endl;
+		}
 
 		currentGameState->render();
+		std::cout << "Frame" << std::endl;
 		SDL_RenderClear(mainRenderer);
 		SDL_RenderPresent(mainRenderer);
 	}
@@ -98,8 +103,13 @@ int main(int argc, char* argv[]) {
 	mainRenderer = NULL;
 	mainWindow = NULL;
 
+	ServiceProvider::provideLogging(new utility::NullLoggingService());
+
 	//Close SDL and various libraries
 	close();
+
+	std::string	DELETE_ME;
+	std::cin >> DELETE_ME;
 
 	return 0;
 }
