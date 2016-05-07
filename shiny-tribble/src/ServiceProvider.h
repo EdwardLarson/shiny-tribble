@@ -4,6 +4,10 @@
 #include "graphics\VideoService.h"
 #include "utility\LoggingService.h"
 
+#ifndef __SERVICE_PROVIDER__
+#define __SERVICE_PROVIDER__ 0;
+#endif
+
 class ServiceProvider
 {
 public:
@@ -11,9 +15,9 @@ public:
 
 	static void clearServices();
 
-	static audio::AudioService* getAudio();
-	static graphics::VideoService* getVideo();
-	static utility::LoggingService* getLogging();
+	static audio::AudioService& getAudio();
+	static graphics::VideoService& getVideo();
+	static utility::LoggingService& getLogging();
 
 	static void provideAudio(audio::AudioService* newAudio);
 	static void provideVideo(graphics::VideoService* newVideo);

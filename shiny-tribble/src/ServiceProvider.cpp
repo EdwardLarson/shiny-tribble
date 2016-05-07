@@ -13,19 +13,19 @@ void ServiceProvider::clearServices() {
 	if (logging_ != NULL) delete logging_;
 }
 
-audio::AudioService* ServiceProvider::getAudio() {
+audio::AudioService& ServiceProvider::getAudio() {
 	if (audio_ == NULL) audio_ = new audio::NullAudioService();
-	return audio_;
+	return *audio_;
 }
 
-graphics::VideoService* ServiceProvider::getVideo() {
+graphics::VideoService& ServiceProvider::getVideo() {
 	if (video_ == NULL) video_ = new graphics::NullVideoService();
-	return video_;
+	return *video_;
 }
 
-utility::LoggingService* ServiceProvider::getLogging() {
+utility::LoggingService& ServiceProvider::getLogging() {
 	if (logging_ == NULL) logging_ = new utility::NullLoggingService();
-	return logging_;
+	return *logging_;
 }
 
 void ServiceProvider::provideAudio(audio::AudioService* newAudio) {

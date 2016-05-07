@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-#include <cassert>
+#define ENDL '\n'
 
 namespace utility{
 
@@ -14,8 +14,11 @@ public:
 
 	virtual void log(const std::string& text) = 0;
 
+	template <class T>
+	friend LoggingService& operator<<(LoggingService& ls, const T& item);
+
 protected:
-	std::string outputFile;
+	std::ostream* outputStream;
 };
 
 class NullLoggingService: public LoggingService {
@@ -31,10 +34,25 @@ public:
 	DefaultLoggingService(const std::string& filename);
 	virtual ~DefaultLoggingService();
 
-	virtual void log(const std::string& text);
+	virtual void log(const std::string& text) override;
 
 protected:
-	std::ofstream outputStream;
+	std::string outputFile;
 };
+
+class ConsoleLoggingService : public LoggingService {
+public:
+	ConsoleLoggingService();
+	virtual ~ConsoleLoggingService();
+
+	virtual void log(const std::string& text) override;
+};
+
+template <class T>
+LoggingService& operator<<(LoggingService& ls, const T& item) {
+	if (ls.outputStream != NULL) (*(ls.outputStream)) << item;
+
+	return ls;
+}
 
 }

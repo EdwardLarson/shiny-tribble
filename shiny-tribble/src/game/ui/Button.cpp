@@ -13,7 +13,7 @@ Button::~Button(){
 }
 
 void Button::render() {
-	ServiceProvider::getVideo()->render(mTexture, x, y);
+	ServiceProvider::getVideo().render(mTexture, x, y);
 }
 
 //Load the variables stored in a DynamicObject into this Button
@@ -36,6 +36,6 @@ void Button::loadFromDynamicObject(utility::parsing::DynamicObject* obj) {
 	current = obj->getValue("img");
 	if (current != "") {
 		easyCast(current, mTexture);
-		ServiceProvider::getVideo()->loadTexture(mTexture);
+		ServiceProvider::getVideo().loadTexture(mTexture);
 	}
 }

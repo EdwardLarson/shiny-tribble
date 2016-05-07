@@ -25,12 +25,12 @@ bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& filename) 
 	SDL_Surface* loadedSurface = IMG_Load(filename.c_str());
 	if (loadedSurface == NULL) {
 		//report error
-		ServiceProvider::getLogging()->log("ERROR: Unable to load texture " + filename);
+		ServiceProvider::getLogging() << "ERROR: Unable to load texture " << filename << ENDL;
 	}else {
 		mSheet = SDL_CreateTextureFromSurface(renderer, loadedSurface);
 		if (mSheet == NULL) {
 			//report error
-			ServiceProvider::getLogging()->log("ERROR: Unable to create texture from " + filename);
+			ServiceProvider::getLogging() << "ERROR: Unable to create texture from " << filename << ENDL;
 		}else {
 			clip.w = loadedSurface->w;
 			clip.h = loadedSurface->h;

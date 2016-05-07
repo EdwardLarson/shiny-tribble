@@ -1,1 +1,3 @@
 === BEGIN LOG === 
+successfully loaded res/graphics/button.png
+successfully loaded res/graphics/center.png

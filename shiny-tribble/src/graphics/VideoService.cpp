@@ -1,5 +1,10 @@
 #include "VideoService.h"
 
+//logging needs to be imported here rather than in the header to avoid calling the type before it exists
+#ifndef __SERVICE_PROVIDER__
+#include "../ServiceProvider.h"
+#endif
+
 using namespace graphics;
 
 VideoService::~VideoService(){
@@ -9,9 +14,11 @@ VideoService::~VideoService(){
 //========================================
 
 NullVideoService::NullVideoService() {
+
 }
 
 NullVideoService::~NullVideoService() {
+
 }
 
 void NullVideoService::render(const std::string& texturePath, int x, int y) {
@@ -47,7 +54,7 @@ void DefaultVideoService::render(const std::string& texturePath, int x, int y) {
 		//texture was never loaded... 
 		//Do we load the texture in the middle of rendering (expensive operation)?
 		//Or go ahead an do nothing (very cheap)?
-		std::cout << "Attempt to render an unloaded texture!" << std::endl;
+		ServiceProvider::getLogging() << "Attempt to render an unloaded texture!" << '\n'; // std::endl;
 	}
 }
 
@@ -71,13 +78,13 @@ void DefaultVideoService::loadTexture(const std::string& filename) {
 			//if texture was successfully loaded, insert it into the map
 			textures.insert(std::make_pair(filename, newTex));
 			//ServiceProvider::getLogging()->log("Successfully loaded " + filename + "\n");
-			std::cout << "successfully loaded " << filename << std::endl;
+			ServiceProvider::getLogging() << "successfully loaded " << filename << '\n'; // std::endl;
 		}else {
 			//ServiceProvider::getLogging()->log("Failed to load " + filename + "\n");
-			std::cout << "unable to load " << filename << std::endl;
+			ServiceProvider::getLogging() << "unable to load " << filename << '\n'; // std::endl;
 		}
 	}else {
 		//ServiceProvider::getLogging()->log(filename + " was already loaded\n");
-		std::cout << "texture " << filename << " was already loaded" << std::endl;
+		ServiceProvider::getLogging() << "texture " << filename << " was already loaded" << '\n'; // std::endl;
 	}
 }

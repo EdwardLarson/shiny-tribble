@@ -56,10 +56,15 @@ int main(int argc, char* argv[]) {
 	utility::time::Timer timeSinceLastUpdate;
 
 	// ---GAME---
+	audio::NullAudioService audioService;
+	graphics::DefaultVideoService videoService(mainRenderer);
+	utility::ConsoleLoggingService loggingService;
+
 	//initialize service
-	ServiceProvider::provideAudio(new audio::NullAudioService());
-	ServiceProvider::provideVideo(new graphics::DefaultVideoService(mainRenderer));
-	ServiceProvider::provideLogging(new utility::DefaultLoggingService("prod/log.txt"));
+	ServiceProvider::provideAudio((audio::AudioService*) &audioService);
+	ServiceProvider::provideVideo((graphics::VideoService*) &videoService);
+	//DefaultLoggingService("prod/log.txt")
+	ServiceProvider::provideLogging((utility::ConsoleLoggingService*) &loggingService);
 
 	//initialize gamestate
 	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState();
@@ -103,9 +108,15 @@ int main(int argc, char* argv[]) {
 	mainWindow = NULL;
 
 	ServiceProvider::provideLogging(new utility::NullLoggingService());
+	ServiceProvider::provideVideo(new graphics::NullVideoService());
+	ServiceProvider::provideAudio(new audio::NullAudioService());
 
 	//Close SDL and various libraries
 	close();
+
+	std::string DELETE_ME;
+	std::cout << "Press enter to close program " << std::endl;
+	std::cin >> DELETE_ME;
 
 	return 0;
 }

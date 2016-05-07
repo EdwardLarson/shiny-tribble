@@ -2,7 +2,6 @@
 
 using namespace utility;
 
-
 LoggingService::~LoggingService(){
 }
 
@@ -10,7 +9,7 @@ LoggingService::~LoggingService(){
 //========================================
 
 NullLoggingService::NullLoggingService() {
-
+	outputStream = NULL;
 }
 
 NullLoggingService::~NullLoggingService() {
@@ -24,26 +23,45 @@ void NullLoggingService::log(const std::string& text) {
 //DefaultLoggingService
 //========================================
 
-DefaultLoggingService::DefaultLoggingService(const std::string& filename)
-	: outputStream(filename.c_str()){
-	if (outputStream.good()) {
-		outputStream << "=== BEGIN LOG === " << std::endl;
+DefaultLoggingService::DefaultLoggingService(const std::string& filename): outputFile(filename) {
+	outputStream = new std::ofstream(filename.c_str());
+	if (outputStream->good()) {
+		*outputStream << "=== BEGIN LOG === " << ENDL;
 	}else {
-		std::cerr << "ERROR: Attempt open " << filename << " for logging was unsuccessful" << std::endl;
+		std::cerr << "ERROR: Attempt open " << filename << " for logging was unsuccessful" << ENDL;
 	}
 }
 
 DefaultLoggingService::~DefaultLoggingService() {
 	//when this object is destroyed, dump the output buffer into a text file
-	if (outputStream.good()) {
-		outputStream << "=== END LOG ===";
-		outputStream.close();
+	if (outputStream != NULL && outputStream->good()) {
+		*outputStream << "=== END LOG ===";
+		((std::ofstream*) outputStream)->close();
 	}
+
+	if (outputStream != NULL) delete outputStream;
 }
 
 void DefaultLoggingService::log(const std::string& text) {
 	//log this text to the output buffer
-	if (outputStream.good()) {
-		outputStream << text << std::endl;
+	if (outputStream != NULL && outputStream->good()) {
+		*outputStream << text << std::endl;
+	}
+}
+
+//ConsoleLoggingService
+//========================================
+
+ConsoleLoggingService::ConsoleLoggingService() {
+	outputStream = &(std::cout);
+}
+
+ConsoleLoggingService::~ConsoleLoggingService() {
+
+}
+
+void ConsoleLoggingService::log(const std::string& text) {
+	if (outputStream != NULL) {
+		*outputStream << text << std::endl;
 	}
 }
