@@ -18,12 +18,14 @@ public:
 	inline bool good() { return mSheet != NULL; }
 
 	inline SDL_Texture* getSheet() const { return mSheet; }
+	inline SDL_Rect getRect() const { return mClip; }
 	inline int getWidth() const { return mClip.w; }
 	inline int getHeight() const { return mClip.h; }
 	inline int getX() const { return mClip.x; }
 	inline int getY() const { return mClip.y; }
 
 	inline void setSheet(SDL_Texture* sheet) { mSheet = sheet; }
+	inline void setRect(const SDL_Rect& rect) { mClip = rect; }
 	inline void setWidth(int width) { mClip.w = width; }
 	inline void setHeight(int height) { mClip.h = height; }
 	inline void setX(int x) { mClip.x = x; }

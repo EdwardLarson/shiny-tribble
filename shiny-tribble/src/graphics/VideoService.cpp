@@ -25,6 +25,10 @@ Texture NullVideoService::loadTexture(const std::string& filename) {
 	return Texture(NULL, NULL, 0, 0, 0, 0);
 }
 
+void NullVideoService::unloadTexture(const Texture& texture) {
+
+}
+
 void NullVideoService::unloadAllTextures() {
 
 }
@@ -100,6 +104,19 @@ Texture DefaultVideoService::loadTexture(const std::string& filename) {
 	}
 
 	return newTexture;
+}
+
+void DefaultVideoService::unloadTexture(const Texture& texture) {
+	//First, attempt to remove the rectangle from the dynamic atlas and see if it was in there to begin with
+	SDL_Rect texRect = texture.getRect();
+	if (mAtlas.removeRectangle(texRect.x, texRect.y, texRect.w, texRect.h)) {
+		//Erase that texture from the actual sheet
+		SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
+		SDL_SetRenderTarget(mRenderer, mSheet);
+		SDL_SetTextureBlendMode(mSheet, SDL_BLENDMODE_BLEND);
+		SDL_RenderFillRect(mRenderer, &texRect);
+		SDL_SetRenderTarget(mRenderer, NULL);
+	}
 }
 
 void DefaultVideoService::unloadAllTextures() {

@@ -1,16 +1,7 @@
-﻿Build started 5/12/2016 2:10:22 PM.
+﻿Build started 5/12/2016 4:42:28 PM.
      1>Project "C:\Users\larsoe4\Documents\shiny-tribble\shiny-tribble\shiny-tribble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\ServiceProvider.cpp src\game\gamestate\GameState.cpp src\game\ui\Button.cpp src\graphics\DynamicAtlas.cpp src\graphics\Texture.cpp
-         DynamicAtlas.cpp
-     1>c:\users\larsoe4\documents\shiny-tribble\shiny-tribble\src\graphics\dynamicatlas.cpp(9): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
-     1>c:\users\larsoe4\documents\shiny-tribble\shiny-tribble\src\graphics\dynamicatlas.cpp(29): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
-     1>c:\users\larsoe4\documents\shiny-tribble\shiny-tribble\src\graphics\dynamicatlas.cpp(42): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
-     1>c:\users\larsoe4\documents\shiny-tribble\shiny-tribble\src\graphics\dynamicatlas.cpp(65): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
-     1>c:\users\larsoe4\documents\shiny-tribble\shiny-tribble\src\graphics\dynamicatlas.cpp(73): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\larsoe4\documents\shiny-tribble\shiny-tribble\src\graphics\dynamicatlas.cpp(163): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
-         Generating Code...
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\ServiceProvider.cpp src\game\entity\Entity.cpp src\game\gamestate\GameState.cpp src\game\ui\Button.cpp src\graphics\Texture.cpp
          ServiceProvider.cpp
          Generating Code...
          Compiling...
@@ -18,12 +9,17 @@
          Button.cpp
          GameState.cpp
          Generating Code...
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\game\gamestate\MainMenuState.cpp src\game\ui\UI.cpp src\graphics\VideoService.cpp src\main.cpp
+         Skipping... (no relevant changes detected)
+         Entity.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\game\GameEnvironment.cpp src\game\gamestate\MainMenuState.cpp src\game\ui\UI.cpp src\graphics\VideoService.cpp src\graphics\graphics.cpp src\main.cpp
          main.cpp
          VideoService.cpp
          UI.cpp
          MainMenuState.cpp
          Generating Code...
+         Skipping... (no relevant changes detected)
+         graphics.cpp
+         GameEnvironment.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.lib" /MACHINE:X86 Debug\DynamicAtlas.obj
          Debug\LoggingService.obj
@@ -48,4 +44,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:25.73
+Time Elapsed 00:00:20.79

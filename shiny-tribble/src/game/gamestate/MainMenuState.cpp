@@ -37,6 +37,6 @@ void MainMenuState::render() {
 void MainMenuState::processEvent(SDL_Event* event) {
 	if (event->type == SDL_KEYDOWN) {
 		if (event->key.keysym.sym == SDLK_RETURN)
-			ServiceProvider::getVideo().unloadAllTextures();
+			ServiceProvider::getVideo().unloadTexture(buttonTex);
 	}
 }

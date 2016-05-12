@@ -18,6 +18,7 @@ public:
 
 	//load a texture from a file, returns the ID of the texture
 	virtual Texture loadTexture(const std::string& filename) = 0;
+	virtual void unloadTexture(const Texture& texture) = 0;
 	virtual void unloadAllTextures() = 0;
 };
 
@@ -27,6 +28,7 @@ public:
 	virtual ~NullVideoService();
 
 	virtual Texture loadTexture(const std::string& filename);
+	virtual void unloadTexture(const Texture& texture);
 	virtual void unloadAllTextures();
 };
 
@@ -38,6 +40,7 @@ public:
 	virtual void renderAtlas();
 
 	virtual Texture loadTexture(const std::string& filename) override;
+	virtual void unloadTexture(const Texture& texture);
 	virtual void unloadAllTextures();
 
 protected:
