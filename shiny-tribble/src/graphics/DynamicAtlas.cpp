@@ -58,6 +58,14 @@ bool DynamicAtlas::removeRectangle(unsigned int x, unsigned int y, unsigned int 
 	return false;
 }
 
+void DynamicAtlas::clear() {
+	openRectangles.clear();
+	filledRectangles.clear();
+
+	RectangleType initialRect = { 0, 0, totalWidth, totalHeight };
+	openRectangles.push_back(initialRect);
+}
+
 //find the first open rectangle that can fit the given rectangle
 DynamicAtlas::RectangleContainer::iterator DynamicAtlas::findFittingRectangle(unsigned int width, unsigned int height) {
 	RectangleContainer::iterator iter;

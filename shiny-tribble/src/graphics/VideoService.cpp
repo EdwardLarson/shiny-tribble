@@ -21,20 +21,12 @@ NullVideoService::~NullVideoService() {
 
 }
 
-void NullVideoService::render(const std::string& texturePath, int x, int y) {
-
-}
-
-void NullVideoService::render(const std::string& texturePath, float relativeX, float relativeY) {
-
-}
-
-void NullVideoService::render(const Texture& texture, int x, int y, int width, int height) {
-
-}
-
 Texture NullVideoService::loadTexture(const std::string& filename) {
-	return Texture(NULL, 0, 0, 0, 0);
+	return Texture(NULL, NULL, 0, 0, 0, 0);
+}
+
+void NullVideoService::unloadAllTextures() {
+
 }
 
 //DefaultVideoService
@@ -53,6 +45,13 @@ DefaultVideoService::DefaultVideoService(SDL_Renderer* renderer)
 
 	if (mSheet == NULL) {
 		ServiceProvider::getLogging() << "Unable to create base sheet! SDL Error: " << SDL_GetError() << '\n';
+	}else {
+		//make base atlas transparent
+		SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
+		SDL_SetRenderTarget(mRenderer, mSheet);
+		SDL_SetTextureBlendMode(mSheet, SDL_BLENDMODE_BLEND);
+		SDL_RenderClear(mRenderer);
+		SDL_SetRenderTarget(mRenderer, NULL);
 	}
 }
 
@@ -60,34 +59,8 @@ DefaultVideoService::~DefaultVideoService() {
 
 }
 
-void DefaultVideoService::render(const std::string& texturePath, int x, int y) {
-	//find the texture loaded from this filename
-	TextureMap::iterator iter = textures.find(texturePath);
-	if (iter != textures.end()) {
-		//render the textures
-		//iter->second->render(mRenderer, x, y);
-	}else {
-		//texture was never loaded... 
-		//Do we load the texture in the middle of rendering (expensive operation)?
-		//Or go ahead an do nothing (very cheap)?
-		ServiceProvider::getLogging() << "Attempt to render an unloaded texture!" << '\n';
-	}
-}
-
-void DefaultVideoService::render(const std::string& texturePath, float relativeX, float relativeY) {
-	int w, h;
-	SDL_GetRendererOutputSize(mRenderer, &w, &h);
-	int x = (int) ((float) relativeX * w);
-	int y = (int) ((float) relativeY * h);
-	render(texturePath, x, y);
-}
-
-void DefaultVideoService::render(const Texture& texture, int x, int y, int width, int height) {
-	texture.render(mRenderer, x, y, width, height);
-}
-
 Texture DefaultVideoService::loadTexture(const std::string& filename) {
-	Texture newTexture(NULL, 0, 0, 0, 0);
+	Texture newTexture(mRenderer, NULL, 0, 0, 0, 0);
 
 	TextureMap::iterator iter;
 	iter = textures.find(filename);
@@ -129,9 +102,21 @@ Texture DefaultVideoService::loadTexture(const std::string& filename) {
 	return newTexture;
 }
 
+void DefaultVideoService::unloadAllTextures() {
+	//make base atlas transparent
+	SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
+	SDL_SetRenderTarget(mRenderer, mSheet);
+	SDL_SetTextureBlendMode(mSheet, SDL_BLENDMODE_BLEND);
+	SDL_RenderClear(mRenderer);
+	SDL_SetRenderTarget(mRenderer, NULL);
+
+	//clear the atlas so it can allocate new rectangles
+	mAtlas.clear();
+}
+
 Texture DefaultVideoService::createSDLTextureFromFile(const char* filename) {
 	SDL_Texture* tex = NULL;
-	Texture wrappedTex(tex, 0, 0, 0, 0);
+	Texture wrappedTex(mRenderer, tex, 0, 0, 0, 0);
 
 	SDL_Surface* loadedSurface = IMG_Load(filename);
 	if (loadedSurface == NULL) {

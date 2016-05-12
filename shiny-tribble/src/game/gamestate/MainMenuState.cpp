@@ -4,7 +4,7 @@ using namespace game;
 using namespace gamestate;
 
 
-MainMenuState::MainMenuState(): buttonTex(NULL, 0, 0, 0, 0){
+MainMenuState::MainMenuState(){
 	mUI.buildFromFile("res/gamedata/ui/main_menu.ui");
 	loadGraphics();
 }
@@ -26,7 +26,7 @@ void MainMenuState::update() {
 
 //Render to main menu to the screen
 void MainMenuState::render() {
-	//ServiceProvider::getVideo().render(buttonTex, 10, 10, 500, 200);
+	//buttonTex.render(10, 10, 500, 200);
 
 	ServiceProvider::getVideo().renderAtlas();
 
@@ -35,5 +35,8 @@ void MainMenuState::render() {
 }
 
 void MainMenuState::processEvent(SDL_Event* event) {
-	
+	if (event->type == SDL_KEYDOWN) {
+		if (event->key.keysym.sym == SDLK_RETURN)
+			ServiceProvider::getVideo().unloadAllTextures();
+	}
 }

@@ -3,22 +3,82 @@
 
 using namespace graphics;
 
-Texture::Texture(SDL_Texture* sheet, int clipX, int clipY, int clipW, int clipH): mSheet(sheet){
-	clip = { clipX, clipY, clipW, clipH };
+Texture::Texture()
+	: mRenderer(NULL), mSheet(NULL){
+	mClip = { 0, 0, 0, 0 };
+}
+
+Texture::Texture(SDL_Renderer* renderer, SDL_Texture* sheet, int clipX, int clipY, int clipW, int clipH)
+	: mRenderer(renderer), mSheet(sheet){
+	mClip = { clipX, clipY, clipW, clipH };
 }
 
 
 Texture::~Texture(){
-
+	//Don't necessarily want to clear sheet as it could be the texture atlas
 }
 
-void Texture::render(SDL_Renderer* renderer, int x, int y, int w, int h) const {
-	//First create a quad where this texture will be rendered
-	SDL_Rect renderQuad = { x, y, w, h };
+void Texture::render(int x, int y, int w, int h) const {
+	//Create a renderquad where this texture will be rendered
+	SDL_Rect renderQuad = { 
+		x, 
+		y, 
+		w,
+		h 
+	};
 	
-	SDL_RenderCopy(renderer, mSheet, &clip, &renderQuad);
+	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);
 }
 
+void Texture::render(float x, float y, int w, int h) const {
+	//Get the total width and height of the target
+	int totalW, totalH;
+	SDL_GetRendererOutputSize(mRenderer, &totalW, &totalH);
+
+	//Create a renderquad for the absolute position to render to based on the relative coordinates
+	SDL_Rect renderQuad = { 
+		((int) ((float) x * totalW)), 
+		((int)((float) y * totalH)), 
+		w, 
+		h 
+	};
+
+	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);
+}
+
+void Texture::render(int x, int y, float w, float h) const {
+	//Get the total width and height of the target
+	int totalW, totalH;
+	SDL_GetRendererOutputSize(mRenderer, &totalW, &totalH);
+
+	//Create a renderquad for the absolute position to render to based on the relative dimensions
+	SDL_Rect renderQuad = {
+		x,
+		y,
+		((int)((float)w * totalW)),
+		((int)((float)h * totalH)),
+	};
+
+	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);
+}
+
+void Texture::render(float x, float y, float w, float h) const {
+	//Get the total width and height of the target
+	int totalW, totalH;
+	SDL_GetRendererOutputSize(mRenderer, &totalW, &totalH);
+
+	//Create a renderquad for the absolute position to render to based on the relative dimensions
+	SDL_Rect renderQuad = {
+		((int)((float)x * totalW)),
+		((int)((float)y * totalH)),
+		((int)((float)w * totalW)),
+		((int)((float)h * totalH)),
+	};
+
+	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);
+}
+
+/*
 bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& filename) {
 	free();
 
@@ -32,14 +92,15 @@ bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& filename) 
 			//report error
 			ServiceProvider::getLogging() << "ERROR: Unable to create texture from " << filename << ENDL;
 		}else {
-			clip.w = loadedSurface->w;
-			clip.h = loadedSurface->h;
+			mClip.w = loadedSurface->w;
+			mClip.h = loadedSurface->h;
 		}
 		SDL_FreeSurface(loadedSurface);
 	}
 
 	return mSheet != NULL;
 }
+*/
 
 void Texture::free() {
 	if (mSheet != NULL) {

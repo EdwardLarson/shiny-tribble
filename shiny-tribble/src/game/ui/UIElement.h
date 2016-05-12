@@ -22,7 +22,7 @@ public:
 
 protected:
 	std::string id;
-	float x, y;
+	float x, y, width, height;
 	int priority;
 };
 

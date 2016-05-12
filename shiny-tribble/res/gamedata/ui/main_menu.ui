@@ -24,8 +24,8 @@ BUTTON {
 	priority = 2;
 	x = 0.7;
 	y = 0.3;
-	width = AUTO;
-	height = AUTO;
+	width = 0.25;
+	height = 0.1;
 	
 	text = "Play";
 	img = "res/graphics/buttonFull.png";

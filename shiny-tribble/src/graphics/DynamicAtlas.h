@@ -22,6 +22,7 @@ public:
 
 	RectangleType addRectangle(unsigned int width, unsigned int height);
 	bool removeRectangle(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
+	void clear();
 
 	//output
 	//void print() const;

@@ -19,7 +19,7 @@ public:
 
 private:
 	std::string text;
-	std::string mTexture;
+	graphics::Texture mTexture;
 };
 
 }

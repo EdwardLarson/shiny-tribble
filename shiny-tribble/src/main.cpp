@@ -164,7 +164,7 @@ SDL_Window* buildWindow(const std::string& title, int width, int height) {
 SDL_Renderer* buildRenderer(SDL_Window* window) {
 	SDL_Renderer* renderer = NULL;
 
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
 	if (renderer == NULL) {
 		printf("Unable to create a renderer! SDL Error: %s\n", SDL_GetError());
 	}
