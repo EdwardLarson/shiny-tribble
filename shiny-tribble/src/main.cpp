@@ -72,6 +72,9 @@ int main(int argc, char* argv[]) {
 	double dt;
 	double lag = 0;
 
+
+	SDL_Rect wholeScreen = { 0, 0, windowW, windowH };
+
 	SDL_Event e;
 
 	//Start the main loop
@@ -93,6 +96,9 @@ int main(int argc, char* argv[]) {
 		}
 
 		SDL_RenderClear(mainRenderer);
+		SDL_SetRenderDrawColor(mainRenderer, 0xFF, 0, 0, 0xFF);
+		SDL_RenderFillRect(mainRenderer, &wholeScreen);
+
 		currentGameState->render();
 		SDL_RenderPresent(mainRenderer);
 	}

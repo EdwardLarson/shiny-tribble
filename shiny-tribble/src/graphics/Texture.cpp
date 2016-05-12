@@ -12,11 +12,11 @@ Texture::~Texture(){
 
 }
 
-void Texture::render(SDL_Renderer* renderer, int x, int y) {
+void Texture::render(SDL_Renderer* renderer, int x, int y, int w, int h) const {
 	//First create a quad where this texture will be rendered
-	SDL_Rect renderQuad = { x, y, clip.w, clip.h };
+	SDL_Rect renderQuad = { x, y, w, h };
 	
-	SDL_RenderCopy(renderer, mSheet, NULL, &renderQuad);
+	SDL_RenderCopy(renderer, mSheet, &clip, &renderQuad);
 }
 
 bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& filename) {

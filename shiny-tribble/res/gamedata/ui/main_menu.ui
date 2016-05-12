@@ -23,10 +23,11 @@ BUTTON {
 	id = button_play;
 	priority = 2;
 	x = 0.7;
-	y = 0.5;
+	y = 0.3;
 	width = AUTO;
 	height = AUTO;
 	
 	text = "Play";
-	img = "res/graphics/button.png";
+	img = "res/graphics/buttonFull.png";
+	fullMapped = true;
 }

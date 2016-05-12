@@ -17,5 +17,5 @@ void Entity::update(){
 }
 
 void Entity::render(SDL_Renderer* renderer) {
-	if (mTexture != NULL) mTexture->render(renderer, x, y);
+	if (mTexture != NULL) mTexture->render(renderer, x, y, 1, 1);
 }
