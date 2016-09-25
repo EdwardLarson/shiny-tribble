@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\Engine.cpp" />
+    <ClCompile Include="src\game\gamestate\TestingState.cpp" />
     <ClCompile Include="src\graphics\DynamicAtlas.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\graphics\ParallaxTexture.cpp" />
     <ClCompile Include="src\utility\LoggingService.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
@@ -52,6 +55,7 @@
     </ClCompile>
     <ClCompile Include="src\graphics\graphics.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\utility\PhysicsLogic.cpp" />
     <ClCompile Include="src\utility\Timer.cpp" />
     <ClCompile Include="src\graphics\Texture.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -63,8 +67,11 @@
     <ClCompile Include="src\graphics\VideoService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\graphics\ParallaxTexture.h" />
+    <ClInclude Include="src\game\Engine.h" />
     <ClInclude Include="src\graphics\DynamicAtlas.h" />
     <ClInclude Include="src\utility\datastructures\PooledList.h" />
+    <ClInclude Include="src\utility\PhysicsLogic.h" />
     <ClInclude Include="src\utility\LoggingService.h" />
     <ClInclude Include="src\audio\AudioService.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -104,6 +111,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="src\graphics\VideoService.h" />
+    <ClInclude Include="src\game\gamestate\TestingState.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{54D93EE0-6152-4F43-80D5-DC803038665C}</ProjectGuid>

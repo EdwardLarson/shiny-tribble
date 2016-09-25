@@ -31,14 +31,15 @@ public:
 	inline void setX(int x) { mClip.x = x; }
 	inline void setY(int y) { mClip.y = y; }
 
+	/*
 	//Render with absolute position and dimensions
 	void render(int x, int y, int w, int h) const;
 	//Render with relative position and absolute dimensions
 	void render(float x, float y, int w, int h) const;
 	//Render with absolute position and relative dimensions
-	void render(int x, int y, float w, float h) const;
+	void render(int x, int y, float w, float h) const;*/
 	//Render with relative position and dimensions
-	void render(float x, float y, float w, float h) const;
+	virtual void render(float x, float y, float w, float h) const;
 
 private:
 	SDL_Renderer* mRenderer;

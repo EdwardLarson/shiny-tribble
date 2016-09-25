@@ -39,6 +39,8 @@ void NullVideoService::unloadAllTextures() {
 DefaultVideoService::DefaultVideoService(SDL_Renderer* renderer)
 	: mRenderer(renderer), mSheet(NULL), mAtlas(DEFAULT_ATLAS_DIM, DEFAULT_ATLAS_DIM, 128) {
 
+	SDL_GetRendererOutputSize(mRenderer, &screenWidth, &screenHeight);
+
 	//create the base sheet
 	mSheet = SDL_CreateTexture(
 								renderer, 

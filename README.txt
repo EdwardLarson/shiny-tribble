@@ -1,0 +1,1 @@
+Just playing around with making a game engine. It's intended for a 2D platformer but I'd like to make it as generalized and extensible as possible, though probably still 2D.

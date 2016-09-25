@@ -1,27 +1,25 @@
-﻿Build started 5/12/2016 4:42:28 PM.
+﻿Build started 9/25/2016 2:02:05 AM.
      1>Project "C:\Users\larsoe4\Documents\shiny-tribble\shiny-tribble\shiny-tribble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\ServiceProvider.cpp src\game\entity\Entity.cpp src\game\gamestate\GameState.cpp src\game\ui\Button.cpp src\graphics\Texture.cpp
-         ServiceProvider.cpp
-         Generating Code...
-         Compiling...
-         Texture.cpp
-         Button.cpp
-         GameState.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Entity.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\game\GameEnvironment.cpp src\game\gamestate\MainMenuState.cpp src\game\ui\UI.cpp src\graphics\VideoService.cpp src\graphics\graphics.cpp src\main.cpp
-         main.cpp
-         VideoService.cpp
-         UI.cpp
-         MainMenuState.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         graphics.cpp
-         GameEnvironment.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt src\game\gamestate\TestingState.cpp
+         TestingState.cpp
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.lib" /MACHINE:X86 Debug\DynamicAtlas.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.lib" /MACHINE:X86 Debug\Engine.obj
+         Debug\TestingState.obj
+         Debug\ParallaxTexture.obj
+         Debug\GameEnvironment.obj
+         Debug\MainMenuState.obj
+         Debug\GameWorld.obj
+         Debug\graphics.obj
+         Debug\main.obj
+         Debug\PhysicsLogic.obj
+         Debug\Timer.obj
+         Debug\UIParsing.obj
+         Debug\UI.obj
+         Debug\Textbox.obj
+         Debug\VideoService.obj
+         Debug\DynamicAtlas.obj
          Debug\LoggingService.obj
          Debug\AudioService.obj
          Debug\ServiceProvider.obj
@@ -29,19 +27,9 @@
          Debug\Entity.obj
          Debug\GameState.obj
          Debug\Texture.obj
-         Debug\GameEnvironment.obj
-         Debug\MainMenuState.obj
-         Debug\GameWorld.obj
-         Debug\graphics.obj
-         Debug\main.obj
-         Debug\Timer.obj
-         Debug\UIParsing.obj
-         Debug\UI.obj
-         Debug\Textbox.obj
-         Debug\VideoService.obj
          shiny-tribble.vcxproj -> C:\Users\larsoe4\Documents\shiny-tribble\Debug\shiny-tribble.exe
      1>Done Building Project "C:\Users\larsoe4\Documents\shiny-tribble\shiny-tribble\shiny-tribble.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:20.79
+Time Elapsed 00:00:04.05

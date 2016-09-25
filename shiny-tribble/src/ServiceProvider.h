@@ -5,8 +5,7 @@
 #include "utility\LoggingService.h"
 
 #ifndef __SERVICE_PROVIDER__
-#define __SERVICE_PROVIDER__ 0;
-#endif
+#define __SERVICE_PROVIDER__
 
 class ServiceProvider
 {
@@ -31,3 +30,5 @@ private:
 	//Logging Service
 	static utility::LoggingService* logging_;
 };
+
+#endif

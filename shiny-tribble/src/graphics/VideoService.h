@@ -20,6 +20,12 @@ public:
 	virtual Texture loadTexture(const std::string& filename) = 0;
 	virtual void unloadTexture(const Texture& texture) = 0;
 	virtual void unloadAllTextures() = 0;
+
+	int getScreenWidth() const { return screenWidth; }
+	int getScreenHeight() const { return screenHeight; }
+
+protected:
+	int screenWidth, screenHeight;
 };
 
 class NullVideoService: public VideoService {

@@ -16,6 +16,8 @@ public:
 	virtual void render() override;
 
 	virtual void loadFromDynamicObject(utility::parsing::DynamicObject * obj) override;
+	virtual void onClick() override;
+	virtual void onMouseOver() override;
 
 private:
 	std::string text;

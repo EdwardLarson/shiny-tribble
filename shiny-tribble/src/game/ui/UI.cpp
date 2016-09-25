@@ -1,5 +1,4 @@
 #include "UI.h"
-#include "../../utility/UIParsing.h"
 
 using namespace game;
 using namespace ui;
@@ -37,6 +36,24 @@ void UI::render() {
 
 		//render element
 		(*iter)->render();
+	}
+}
+
+void UI::processMouseEvent(SDL_Event* event) {
+	int mouseX_raw, mouseY_raw;
+	SDL_GetMouseState(&mouseX_raw, &mouseY_raw);
+	float mouseX, mouseY;
+	mouseX = ((float)mouseX_raw) / ServiceProvider::getVideo().getScreenWidth();
+	mouseY = ((float)mouseY_raw) / ServiceProvider::getVideo().getScreenHeight();
+
+	for (std::list<game::ui::UIElement*>::iterator iter = elements.begin();
+		iter != elements.end();
+		++iter) {
+
+		if ((*iter)->contains(mouseX, mouseY)) {
+			//now decide on action to take
+			(*iter)->onMouseOver();
+		}
 	}
 }
 

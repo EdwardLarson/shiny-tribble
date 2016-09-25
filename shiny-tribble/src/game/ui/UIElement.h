@@ -3,6 +3,7 @@
 #include <istream>
 #include <sstream>
 #include <SDL.h>
+#include "../../utility/PhysicsLogic.h"
 #include "../../utility/UIParsing.h"
 
 namespace game {
@@ -17,12 +18,16 @@ public:
 	virtual void render() = 0;
 
 	virtual void loadFromDynamicObject(utility::parsing::DynamicObject* obj) = 0;
+	virtual void onClick() = 0;
+	virtual void onMouseOver() = 0;
 
 	int getPriority() { return priority; }
+	bool contains(float itemX, float itemY) { return utility::contains(itemX, itemY, x, y, width, height); }
 
 protected:
 	std::string id;
 	float x, y, width, height;
+	//how do I do everything in relative coordinates?
 	int priority;
 };
 

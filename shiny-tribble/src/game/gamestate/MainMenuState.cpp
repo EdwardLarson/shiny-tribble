@@ -26,17 +26,21 @@ void MainMenuState::update() {
 
 //Render to main menu to the screen
 void MainMenuState::render() {
-	//buttonTex.render(10, 10, 500, 200);
+	buttonTex.render(10, 10, 500, 200);
 
-	ServiceProvider::getVideo().renderAtlas();
+	//ServiceProvider::getVideo().renderAtlas();
 
 	//render UI over everything
-	//mUI.render();
+	mUI.render();
 }
 
 void MainMenuState::processEvent(SDL_Event* event) {
 	if (event->type == SDL_KEYDOWN) {
 		if (event->key.keysym.sym == SDLK_RETURN)
 			ServiceProvider::getVideo().unloadTexture(buttonTex);
+	}else if (event->type == SDL_MOUSEBUTTONDOWN) {
+		event->motion;
+	}else if (event->type == SDL_MOUSEBUTTONUP) {
+		ServiceProvider::getLogging() << "mousebutton up yo!\n";
 	}
 }

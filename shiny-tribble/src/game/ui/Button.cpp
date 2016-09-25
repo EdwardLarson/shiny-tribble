@@ -50,3 +50,11 @@ void Button::loadFromDynamicObject(utility::parsing::DynamicObject* obj) {
 		mTexture = ServiceProvider::getVideo().loadTexture(current);
 	}
 }
+
+void Button::onClick() {
+
+}
+
+void Button::onMouseOver() {
+	ServiceProvider::getLogging().log("Moused over button: " + id);
+}

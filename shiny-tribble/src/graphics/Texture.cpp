@@ -18,6 +18,7 @@ Texture::~Texture(){
 	//Don't necessarily want to clear sheet as it could be the texture atlas
 }
 
+/*
 void Texture::render(int x, int y, int w, int h) const {
 	//Create a renderquad where this texture will be rendered
 	SDL_Rect renderQuad = { 
@@ -29,6 +30,7 @@ void Texture::render(int x, int y, int w, int h) const {
 	
 	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);
 }
+
 
 void Texture::render(float x, float y, int w, int h) const {
 	//Get the total width and height of the target
@@ -61,6 +63,7 @@ void Texture::render(int x, int y, float w, float h) const {
 
 	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);
 }
+*/
 
 void Texture::render(float x, float y, float w, float h) const {
 	//Get the total width and height of the target
@@ -69,10 +72,10 @@ void Texture::render(float x, float y, float w, float h) const {
 
 	//Create a renderquad for the absolute position to render to based on the relative dimensions
 	SDL_Rect renderQuad = {
-		((int)((float)x * totalW)),
-		((int)((float)y * totalH)),
-		((int)((float)w * totalW)),
-		((int)((float)h * totalH)),
+		((int)(x * (float)totalW)),
+		((int)(y * (float)totalH)),
+		((int)(w * (float)totalW)),
+		((int)(h * (float)totalH)),
 	};
 
 	SDL_RenderCopy(mRenderer, mSheet, &mClip, &renderQuad);

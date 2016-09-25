@@ -19,6 +19,7 @@ LAST UPDATED: 5/3/2016
 #include "utility\Timer.h"
 #include "game\gamestate\GameState.h"
 #include "game\gamestate\MainMenuState.h"
+#include "game\gamestate\TestingState.h"
 
 bool init();
 void close();
@@ -67,7 +68,7 @@ int main(int argc, char* argv[]) {
 	ServiceProvider::provideLogging((utility::ConsoleLoggingService*) &loggingService);
 
 	//initialize gamestate
-	game::gamestate::GameState* currentGameState = new game::gamestate::MainMenuState();
+	game::gamestate::GameState* currentGameState = new game::gamestate::TestingState();
 
 	double dt;
 	double lag = 0;
