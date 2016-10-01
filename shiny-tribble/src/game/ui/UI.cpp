@@ -4,7 +4,7 @@ using namespace game;
 using namespace ui;
 
 UI::UI(){
-
+	states = SDL_GetKeyboardState( NULL );
 }
 
 
@@ -55,6 +55,10 @@ void UI::processMouseEvent(SDL_Event* event) {
 			(*iter)->onMouseOver();
 		}
 	}
+}
+
+bool UI::getState(SDL_Scancode key) const{
+	return (bool) states[key];
 }
 
 //Create an actual UIElement from a DynamicObject

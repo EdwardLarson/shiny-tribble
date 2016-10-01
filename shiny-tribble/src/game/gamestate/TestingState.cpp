@@ -5,13 +5,13 @@ using namespace gamestate;
 
 TestingState::TestingState() : parallaxTex(true, 10)
 {
-	tex_a = ServiceProvider::getVideo().loadTexture("res/graphics/parallax1.png");
-	tex_b = ServiceProvider::getVideo().loadTexture("res/graphics/parallax2.png");
-	tex_c = ServiceProvider::getVideo().loadTexture("res/graphics/parallax3.png");
+	graphics::Texture tex_a = ServiceProvider::getVideo().loadTexture("res/graphics/parallax1.png");
+	graphics::Texture tex_b = ServiceProvider::getVideo().loadTexture("res/graphics/parallax2.png");
+	graphics::Texture tex_c = ServiceProvider::getVideo().loadTexture("res/graphics/parallax3.png");
 
-	parallaxTex.addTexture(&tex_a, 0);
-	parallaxTex.addTexture(&tex_b, 3);
-	parallaxTex.addTexture(&tex_c, 4);
+	parallaxTex.addTexture(tex_a, 0);
+	parallaxTex.addTexture(tex_b, 3);
+	parallaxTex.addTexture(tex_c, 4);
 
 
 }
@@ -28,6 +28,18 @@ void game::gamestate::TestingState::loadGraphics()
 void game::gamestate::TestingState::update()
 {
 	
+	if (mUI.getState(SDL_SCANCODE_W)) {
+		parallaxTex.moveRect(0.0f, -0.001f);
+	}
+	if (mUI.getState(SDL_SCANCODE_S)) {
+		parallaxTex.moveRect(0.0f, 0.001f);
+	}
+	if (mUI.getState(SDL_SCANCODE_A)) {
+		parallaxTex.moveRect(-0.001f, 0.0f);
+	}
+	if (mUI.getState(SDL_SCANCODE_D)) {
+		parallaxTex.moveRect(0.001f, 0.0f);
+	}
 }
 
 void game::gamestate::TestingState::render()
@@ -37,6 +49,7 @@ void game::gamestate::TestingState::render()
 
 void game::gamestate::TestingState::processEvent(SDL_Event * event)
 {
+	/*
 	if (event->type == SDL_KEYDOWN) {
 		if (event->key.keysym.sym == SDLK_d) {
 			parallaxTex.moveRect(0.001f, 0.0f);
@@ -54,7 +67,9 @@ void game::gamestate::TestingState::processEvent(SDL_Event * event)
 			ServiceProvider::getLogging() << "moveDown\n";
 		}
 	}
-	else if (event->type == SDL_MOUSEBUTTONDOWN) {
+	else */
+	
+	if (event->type == SDL_MOUSEBUTTONDOWN) {
 		event->motion;
 	}
 	else if (event->type == SDL_MOUSEBUTTONUP) {

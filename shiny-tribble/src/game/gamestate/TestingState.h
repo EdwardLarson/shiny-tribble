@@ -23,10 +23,6 @@ public:
 private:
 	graphics::ParallaxTexture parallaxTex;
 
-	graphics::Texture tex_a;
-	graphics::Texture tex_b;
-	graphics::Texture tex_c;
-
 
 };
 

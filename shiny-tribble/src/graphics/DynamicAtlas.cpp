@@ -17,7 +17,7 @@ DynamicAtlas::~DynamicAtlas() {
 //adds a rectangle to the DynamicAtlas of the given width and height
 //if successful, returns the rectangle with the position it was added at and the given dimensions
 //returns a rectangle with position (0, 0) and dimensions 0 by 0 if there was no space
-DynamicAtlas::RectangleType DynamicAtlas::addRectangle(unsigned int width, unsigned int height) {
+DynamicAtlas::RectangleType DynamicAtlas::addRectangle(int width, int height) {
 	//first see if there is enough space in the whole atlas
 	if (width > totalWidth || height > totalHeight) return emptyRectangle();
 
@@ -38,7 +38,7 @@ DynamicAtlas::RectangleType DynamicAtlas::addRectangle(unsigned int width, unsig
 }
 
 //remove a rectangle from the DynamicAtlas
-bool DynamicAtlas::removeRectangle(unsigned int x, unsigned int y, unsigned int width, unsigned int height) {
+bool DynamicAtlas::removeRectangle(unsigned int x, unsigned int y, int width, int height) {
 	RectangleType rect = { x, y, width, height };
 
 	//see if a rectangle matches this one
@@ -67,7 +67,7 @@ void DynamicAtlas::clear() {
 }
 
 //find the first open rectangle that can fit the given rectangle
-DynamicAtlas::RectangleContainer::iterator DynamicAtlas::findFittingRectangle(unsigned int width, unsigned int height) {
+DynamicAtlas::RectangleContainer::iterator DynamicAtlas::findFittingRectangle(int width, int height) {
 	RectangleContainer::iterator iter;
 	for (iter = openRectangles.begin(); iter != openRectangles.end(); ++iter) {
 		if (iter->w >= width && iter->h >= height) break;

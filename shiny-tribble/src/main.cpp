@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
 	while (!quit) {
 
 		while (SDL_PollEvent(&e) != 0) {
-			if (e.type == SDL_QUIT) quit = true;
+			if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) quit = true;
 			else currentGameState->processEvent(&e);
 		}
 
@@ -103,6 +103,7 @@ int main(int argc, char* argv[]) {
 		currentGameState->render();
 		SDL_RenderPresent(mainRenderer);
 	}
+	///gotta be some problem here
 
 	//Deallocate all variables
 
@@ -114,9 +115,15 @@ int main(int argc, char* argv[]) {
 	mainRenderer = NULL;
 	mainWindow = NULL;
 
+	std::cout << "checkpoint 1" << std::endl;
+
 	ServiceProvider::provideLogging(new utility::NullLoggingService());
+	std::cout << "checkpoint 2" << std::endl;
 	ServiceProvider::provideVideo(new graphics::NullVideoService());
+	std::cout << "checkpoint 3" << std::endl;
 	ServiceProvider::provideAudio(new audio::NullAudioService());
+
+	std::cout << "checkpoint 4" << std::endl;
 
 	//Close SDL and various libraries
 	close();

@@ -67,6 +67,7 @@
     <ClCompile Include="src\graphics\VideoService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\ui\UI.h" />
     <ClInclude Include="src\graphics\ParallaxTexture.h" />
     <ClInclude Include="src\game\Engine.h" />
     <ClInclude Include="src\graphics\DynamicAtlas.h" />
@@ -104,7 +105,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="src\utility\UIParsing.h" />
-    <ClInclude Include="src\game\ui\UI.h" />
     <ClInclude Include="src\game\ui\UIElement.h" />
     <ClInclude Include="src\game\ui\Textbox.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -112,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="src\graphics\VideoService.h" />
     <ClInclude Include="src\game\gamestate\TestingState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{54D93EE0-6152-4F43-80D5-DC803038665C}</ProjectGuid>

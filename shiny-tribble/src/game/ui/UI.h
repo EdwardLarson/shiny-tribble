@@ -20,13 +20,18 @@ public:
 	virtual void render();
 	virtual void processMouseEvent(SDL_Event* event);
 
+	bool getState(SDL_Scancode key) const;
+
 	virtual void buildFromFile(char* filename);
 
 private:
+
 	std::list<game::ui::UIElement*> elements;
 
 	game::ui::UIElement* createElementFromDynamicObject(utility::parsing::DynamicObject* obj);
 	void sortIntoElements(game::ui::UIElement* element);
+
+	const Uint8* states;
 };
 
 

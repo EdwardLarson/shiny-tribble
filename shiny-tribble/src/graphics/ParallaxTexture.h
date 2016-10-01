@@ -7,14 +7,14 @@ class ParallaxTexture : public Texture{
 
 private:
 	struct ParallaxLayer {
-		Texture* layerTexture;
+		Texture layerTexture;
 		int z;
 	};
 public:
 	ParallaxTexture(bool reverseRender, int z0);
 	virtual ~ParallaxTexture();
 
-	void addTexture(Texture* texture, int z);
+	void addTexture(Texture texture, int z);
 
 	void render(float x, float y, float w, float h) const;
 

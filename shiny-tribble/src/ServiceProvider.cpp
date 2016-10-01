@@ -39,6 +39,8 @@ void ServiceProvider::provideVideo(graphics::VideoService* newVideo) {
 }
 
 void ServiceProvider::provideLogging(utility::LoggingService* newLogging) {
+	std::cout << "checkpoint i" << std::endl;
 	delete logging_;
+	std::cout << "checkpoint ii" << std::endl;
 	logging_ = newLogging;
 }

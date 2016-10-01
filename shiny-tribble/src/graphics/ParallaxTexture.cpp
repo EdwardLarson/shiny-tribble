@@ -12,7 +12,7 @@ graphics::ParallaxTexture::ParallaxTexture(bool reverseRender, int z0): Texture(
 graphics::ParallaxTexture::~ParallaxTexture(){
 }
 
-void graphics::ParallaxTexture::addTexture(Texture* texture, int z) {
+void graphics::ParallaxTexture::addTexture(Texture texture, int z) {
 	//insert new parallax layer  in order, so that the highest z is first
 	std::list<ParallaxLayer>::iterator iter;
 	for (iter = layers.begin();
@@ -37,7 +37,7 @@ void graphics::ParallaxTexture::render(float x, float y, float w, float h) const
 		float offsetX = x + getLayerXOffset(iter->z);
 		float offsetY = y + getLayerYOffset(iter->z);
 
-		iter->layerTexture->render(offsetX, offsetY, w, h);
+		iter->layerTexture.render(offsetX, offsetY, w, h);
 	}
 }
 
